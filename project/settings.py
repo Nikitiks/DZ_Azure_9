@@ -29,8 +29,18 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = [
+    'product-app-efatdsdrcgdxccgx.polandcentral-01.azurewebsites.net',
+    'localhost',
+    '127.0.0.1',
+    '.azurewebsites.net',
+    "*"
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://product-app-efatdsdrcgdxccgx.polandcentral-01.azurewebsites.net'
+]
 
 # Application definition
 
@@ -85,6 +95,9 @@ DATABASES = {
         'PORT':os.getenv("DB_PORT"),
         'USER':os.getenv("DB_USER"),
         'PASSWORD':os.getenv("DB_PASSWORD"),
+        'OPTIONS': {
+            'ssl': {}
+        }
     }
 }
 
