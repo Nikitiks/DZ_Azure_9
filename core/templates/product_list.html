@@ -7,6 +7,9 @@
 <ul>
     {% for product in products %}
     <li>
+        {% if product.image_path %}
+            <img src="{{ product.image_path }}" width="150" height="150" style="object-fit: cover; border-radius: 8px;">
+        {% endif %}
         <b>{{product.name}} - {{product.price}}</b>
         <br>
         <small>Category: 
