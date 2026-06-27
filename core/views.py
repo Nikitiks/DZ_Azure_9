@@ -33,4 +33,5 @@ class ProductCreateView(CreateView):
                 print(f"Upload error: {e}")
         
         product.save()
+        form.instance = product
         return super().form_valid(form)
