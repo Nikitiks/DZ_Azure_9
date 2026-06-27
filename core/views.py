@@ -20,12 +20,17 @@ class ProductCreateView(CreateView):
     template_name='product_create.html'
     success_url=reverse_lazy('product-list')
 
-    def from_valid(self, form):
+    def form_valid(self, form):
+
         product = form.save(commit=False)
-
-        image_file = self.request.FILES.get('images')
+        image_file = self.request.FILES.get("image")
+        
         if image_file:
-            product.image_path = upload_image(image_file)
-
+            try:
+                product.image_path = upload_image(image_file)
+                print(f"Uploaded: {product.image_path}")
+            except Exception as e:
+                print(f"Upload error: {e}")
+        
         product.save()
         return super().form_valid(form)

@@ -11,6 +11,9 @@ CONTAINER_NAME = os.getenv("ST_CONTAINER_NAME")
 
 def upload_image(file, filename:str = None) -> str:
     
+    print(CONNECTION_STRING)
+    print(CONTAINER_NAME)
+
     if not filename:
         name = os.path.splitext(file.name)[1]
         filename = f"{uuid.uuid4()}_{name}"
